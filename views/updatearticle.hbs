@@ -1,0 +1,8 @@
+<h1>update your article here</h1>
+{{#each post}}
+<form class="form" action="/post/{{id}}/update" method="post">
+  <input  name="title" value="{{title}}">
+  <input  name="article" value="{{article}}">
+  <input  type="submit" value="Update">
+</form>
+{{/each}}

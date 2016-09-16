@@ -3,9 +3,8 @@ exports.up = function(knex, Promise) {
 return knex.schema.createTable("post",function(table){
   table.increments();
   table.text("title");
-  table.text("author");
   table.text("article");
-  table.integer("user_id").references("id").inTable("users");
+  table.integer("user_id");
   table.timestamps(true,true);
 })
 };

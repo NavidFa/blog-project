@@ -2,7 +2,7 @@
 <h1>My Blog</h1>
 {{#if verified}}
 <a href="/logout">Logout</a>
-{{user.username}}
+{{user.name}}
 <a  class="log" href="/post">Post an article</a>
 {{/if}}
 
@@ -14,8 +14,9 @@
 
 {{#each posts}}
 <a href="/individualpost/{{id}}">
+  {{id}}
 <h1>Title:{{title}}</h1>
-<h2>Author:{{author}}</h2>
+<h2>Author:{{name}}</h2>
 <h3>Article:{{article}}</h3>
 <h4>{{created_at}}</h4>
 </a>

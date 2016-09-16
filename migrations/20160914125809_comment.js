@@ -2,9 +2,9 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable("comment", function(table){
     table.increments();
-    table.text("commentator");
     table.text("commentbody");
-    table.integer("post_id").references("id").inTable("post");
+    table.integer("user_id");
+    table.integer("post_id");
     table.timestamps(true,true);
   })
 };
