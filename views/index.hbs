@@ -1,3 +1,22 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+
 <h1>My Blog</h1>
+{{#if verified}}
+<a href="/logout">Logout</a>
+{{user.username}}
+<a  class="log" href="/post">Post an article</a>
+{{/if}}
+
+{{#unless verified}}
+<div class="log">
+<a href="/login">Log in or Register</a>
+</div>
+{{/unless}}
+
+{{#each posts}}
+<a href="/individualpost/{{id}}">
+<h1>Title:{{title}}</h1>
+<h2>Author:{{author}}</h2>
+<h3>Article:{{article}}</h3>
+<h4>{{created_at}}</h4>
+</a>
+{{/each}}

@@ -1,0 +1,31 @@
+<a class="log" href="/">HOME</a>
+{{#if verified}}
+<a href="/logout">Logout</a>
+{{user.username}}
+{{/if}}
+{{#each posts}}
+<h1>Title:{{title}}</h1>
+<h2>Author:{{author}}</h2>
+<h3>Article:{{article}}</h3>
+<h4>{{created_at}}</h4>
+{{/each}}
+<form action="/postcomment/{{id}}/{{user.username}}" method="POST">
+  <input  name="commentbody" placeholder="Write a comment">
+  <input type="submit" class="submit" value="Post a Comment" />
+</form>
+{{#if owner}}
+<h2>hello</h2>
+{{/if}}
+
+{{#each comments}}
+<h5>{{commentbody}}</h5>
+<h6>{{created_at}}</h6>
+{{/each}}
+
+<!-- <form action="/post/{{id}}/delete" method="POST">
+  <input type="submit" class="submit" value="delete" />
+</form>
+
+<form action="/post/{{id}}/comment" method="POST">
+  <input type="submit" class="submit" value="comment" />
+</form> -->
