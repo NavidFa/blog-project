@@ -1,0 +1,13 @@
+<a class="home"  href="/">HOME</a>
+
+{{#if owner}}
+{{#each comment}}
+<form action="/comment/{{id}}/update/{{post_id}}" method="POST">
+  <textarea name="commentbody" rows="8" cols="40" minlength=3 placeholder="Write a comment">{{commentbody}}</textarea>
+    <input type="submit" class="submit" value="update my comments" />
+</form>
+<form action="/comment/{{id}}/delete/{{post_id}}" method="POST">
+    <input type="submit" class="submit" value="delete my comment" />
+</form>
+{{/each}}
+{{/if}}

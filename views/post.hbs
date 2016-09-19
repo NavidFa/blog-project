@@ -1,12 +1,8 @@
+<a  class="home" href="/">HOME</a>
+
 <h1>post your article here</h1>
 <form     class="form" action="/postanarticle/{{user.id}}" method="post">
-  <input  name="title" placeholder="Title">
-  <input  name="article" placeholder="Write your post here">
-  <input  type="submit" value="Post">
-</form>
-<h1>update your article here</h1>
-<form     class="form" action="/postanarticle/{{user.id}}" method="post">
-  <input  name="title" placeholder="Title">
-  <input  name="article" placeholder="Write your post here">
+  <input  name="title" placeholder="Title" minlength=3>
+  <textarea  name="article"rows="9" cols="60" minlength=3 placeholder="Write your post here"></textarea>
   <input  type="submit" value="Post">
 </form>

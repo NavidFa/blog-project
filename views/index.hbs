@@ -1,23 +1,26 @@
-
-<h1>My Blog</h1>
 {{#if verified}}
-<a href="/logout">Logout</a>
-{{user.name}}
-<a  class="log" href="/post">Post an article</a>
+    <div class="log">
+        <a href="/logout">Logout</a> {{user.name}}
+    </div>
+    <a href="/post">Post an article</a>
 {{/if}}
 
 {{#unless verified}}
-<div class="log">
-<a href="/login">Log in or Register</a>
-</div>
+    <div class="log">
+        <a href="/login">Log in to post</a>
+    </div>
 {{/unless}}
 
+<h1>My Blog</h1>
+
 {{#each posts}}
-<a href="/individualpost/{{id}}">
-  {{id}}
-<h1>Title:{{title}}</h1>
-<h2>Author:{{name}}</h2>
-<h3>Article:{{article}}</h3>
-<h4>{{created_at}}</h4>
-</a>
+    <a href="/individualpost/{{id}}">
+      <div class="post-box">
+        <h1 class="title">{{title}}</h1>
+        <h3>Author:{{name}}</h3>
+        <h4>{{article}}</h4>
+        <h4>{{created_at}}</h4>
+        </div>
+    </a>
+
 {{/each}}

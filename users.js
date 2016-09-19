@@ -30,7 +30,7 @@ function Register(name, username, password) {
         var hash=hashedpass(password)
         return query.AddUser(name,username,hash);
       }
-      return "username is already exists"
+      return {no:"username is already exists"}
     })
   }
 

@@ -7,7 +7,7 @@ passport.use(new Local(function(username, password, done) {
     users.authenticateUser(username, password)
     .then(function(isitauthenticated){
       if(!isitauthenticated ){
-        done(null, false)
+        done(null, false,{wrongpass:"wrong password"})
         return
       }
        users.findUser(username)

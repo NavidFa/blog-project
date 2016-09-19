@@ -1,41 +1,44 @@
-<a class="log" href="/">HOME</a>
+
+<a  class="home" href="/">HOME</a>
 {{#if verified}}
-    <a href="/logout">Logout</a> {{user.username}}
-{{/if}}
-{{#if owner}}
-    <form action="/post/{{id}}/delete" method="POST">
-        <input type="submit" class="submit" value="delete this post" />
-    </form>
-    <a class="log" href="/updatearticle/{{id}}"> update your article</a>
+    <div class="log">
+        <a href="/logout">Logout</a> {{user.name}}
+    </div>
+    <a href="/post">Post an article</a>
 {{/if}}
 
-{{#each posts}}
-    <h1>Title:{{title}}</h1>
-    <h2>Author:{{name}}</h2>
-    <h3>Article:{{article}}</h3>
-    <h4>{{created_at}}</h4>
-{{/each}}
-<h5>post id: {{id}}</h5>
-<h5>user id: {{user.id}}</h5>
+{{#unless verified}}
+    <div class="log">
+        <a href="/login">Log in to post</a>
+    </div>
+{{/unless}}
+{{#if owner}}
+    <a class="del" href="/updatearticle/{{id}}/{{user.id}}"> update or delete this article</a>
+{{/if}}
+<div class="post-box">
+    {{#each posts}}
+        <h1 class="title">{{title}}</h1>
+        <h3>Author:{{name}}</h3>
+        <h4>{{article}}</h4>
+        <h4>{{created_at}}</h4>
+    {{/each}}
+</div>
 
 
 {{#if verified}}
     <form action="/postcomment/{{id}}/{{user.id}}" method="POST">
-        <input name="commentbody" placeholder="Write a comment">
-        <input type="submit" class="submit" value="Post a Comment" />
+      <textarea name="commentbody" rows="3" cols="40" minlength=3 placeholder="Write a comment"></textarea>
+        <input type="submit" class="submit" value="Post your Comment" />
     </form>
 {{/if}}
 
 {{#each comments}}
-    <h5>{{commentbody}}</h5>
+<div class="comment">
+<h6>{{name}} wrote :</h6>
+    <h4>{{commentbody}}</h4>
     <h6>{{created_at}}</h6>
     {{#if commentator}}
-        <form action="/comment/{{id}}/delete/{{post_id}}" method="POST">
-            <input type="submit" class="submit" value="delete my comment" />
-        </form>
-        <form action="/comment/{{id}}/update/{{post_id}}" method="POST">
-            <input name="commentbody" value="{{commentbody}}">
-            <input type="submit" class="submit" value="update my comments" />
-        </form>
+    <a class="modify" href="/modifycomment/{{id}}/{{user_id}}"> Update or delete this comment</a>
     {{/if}}
+  </div>
 {{/each}}

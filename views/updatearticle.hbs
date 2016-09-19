@@ -1,8 +1,14 @@
-<h1>update your article here</h1>
-{{#each post}}
-<form class="form" action="/post/{{id}}/update" method="post">
-  <input  name="title" value="{{title}}">
-  <input  name="article" value="{{article}}">
-  <input  type="submit" value="Update">
-</form>
-{{/each}}
+<a  class="home" href="/">HOME</a>
+{{#if owner}}
+    <h1>Update your article here</h1>
+    {{#each post}}
+        <form class="form" action="/post/{{id}}/update" method="post">
+            <input name="title" value="{{title}}" minlength=3>
+            <textarea  name="article"rows="7" cols="80" minlength=3 placeholder="Update your post here">{{article}}</textarea>
+            <input type="submit" value="Update">
+        </form>
+        <form action="/post/{{id}}/delete" method="POST">
+            <input type="submit" class="submit" value="delete this post" />
+        </form>
+    {{/each}}
+{{/if}}
