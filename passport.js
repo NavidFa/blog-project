@@ -7,12 +7,12 @@ passport.use(new Local(function(username, password, done) {
     users.authenticateUser(username, password)
     .then(function(isitauthenticated){
       if(!isitauthenticated ){
-        done(null, false,{wrongpass:"wrong password"})
+        done(null, false)
         return
       }
        users.findUser(username)
        .then(function(user){
-         done(null, user)
+         done(null,user)
        })
        })
 }))

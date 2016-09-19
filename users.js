@@ -11,7 +11,7 @@ function hashedpass(password) {
 
 function findUser(username) {
           return query.Users().first().where({
-                 username: username,
+                 username: username.toLowerCase(),
              })
 }
 
