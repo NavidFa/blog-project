@@ -3,6 +3,11 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    {{#if user}}
+    <script>
+        var username = "{{user.name}}"
+     </script>
+      {{/if}}
   </head>
   <body>
     {{{body}}}
