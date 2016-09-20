@@ -12,5 +12,6 @@ $("#target").submit(function(event){
 
 socket.on('sent message', function(message){
  $("#messages").append('<li>' + message + '</li>');
+ $("#name").show();
 })
 })

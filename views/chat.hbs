@@ -5,8 +5,10 @@
   <input id="m" type="text" name="name" autocomplete="off">
   <input type="submit" value="send">
 </form>
+
 <ul id="messages">
-{{user.name}}
+  <span id="name">{{user.name}}
+</span>
 </ul>
 {{/if}}
 <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
