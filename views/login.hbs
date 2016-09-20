@@ -1,16 +1,16 @@
 <a class="home" href="/">HOME</a>
 <h1>Login</h1>
 <form class="form" action="/signin" method="post">
-  <input  name="username" placeholder="Username"  minlength=5 required>
-  <input  type="password" name="password" placeholder="Password"  minlength=5 maxlength=10 required>
-  <input type="submit" value="Log in">
+    <input name="username" placeholder="Username" minlength=5 required>
+    <input type="password" name="password" placeholder="Password" minlength=5 maxlength=10 required>
+    <input type="submit" value="Log in">
 </form>
 <h1>Register</h1>
 <form class="form" action="/register" method="post">
-  <input  name="name" placeholder="Name" minlength=3 required>
-  <input  name="username" placeholder="Username" minlength=5 maxlength=10 required>
-  <input  type="password" name="password" placeholder="password" minlength=5 maxlength=10 required>
-  <input type="submit" value="Register">
+    <input name="name" placeholder="Name" minlength=3 required>
+    <input name="username" placeholder="Username" minlength=5 maxlength=10 required>
+    <input type="password" name="password" placeholder="password" minlength=5 maxlength=10 required>
+    <input type="submit" value="Register">
 </form>
-{{no}}
-{{wrongpass}}
+<h3>{{error}}</h3>
+<h3>{{notvalid}}</h3>

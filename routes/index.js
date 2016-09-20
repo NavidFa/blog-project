@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
 router.get('/individualpost/:id', function(req, res, next) {
     query.Posts().where("post.id", req.params.id)
         .then(function(posts) {
-            return query.Comments().orderBy("comment.id","desc").where({
+            return query.Comments().orderBy("comment.id", "desc").where({
                     post_id: req.params.id
                 })
                 .then(function(comments) {
@@ -48,11 +48,17 @@ router.get('/individualpost/:id', function(req, res, next) {
                 })
         })
 
- })
+})
 
 router.get('/post', function(req, res, next) {
     res.render('post', {
         user: req.user,
+    })
+});
+router.get('/chat', function(req, res, next) {
+    res.render('chat',{
+      verified: req.isAuthenticated(),
+      user: req.user,
     })
 });
 router.get('/updatearticle/:id/:user', function(req, res, next) {
@@ -73,15 +79,17 @@ router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect(req.get('referer'));
 });
-router.get('/modifycomment/:id/:user',function(req,res,next){
-  query.Comment().where({id:req.params.id})
-  .then(function(comment){
-    res.render('modify', {
-        comment: comment,
-        owner: req.user ? req.params.user == req.user.id : false,
-    })
+router.get('/modifycomment/:id/:user', function(req, res, next) {
+    query.Comment().where({
+            id: req.params.id
+        })
+        .then(function(comment) {
+            res.render('modify', {
+                comment: comment,
+                owner: req.user ? req.params.user == req.user.id : false,
+            })
 
-  })
+        })
 })
 router.post('/postanarticle/:id', function(req, res, next) {
     query.PostAnArticle(req.body.article, req.params.id, req.body.title)
@@ -99,18 +107,21 @@ router.post('/postcomment/:id/:user', function(req, res, next) {
 });
 router.post('/register', function(req, res, next) {
     users.Register(req.body.name, req.body.username, req.body.password)
-        .then(function(no){
-          console.log(no);
-        res.render('login',{no:no.no})
-})
+        .then(function(error) {
+            res.render('login', {
+                error: error.error
+            })
+        })
 })
 
 router.post('/signin', passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
+
 }))
+
 router.post('/post/:id/delete', function(req, res, next) {
-     query.DeletePost(req.params.id)
+    query.DeletePost(req.params.id)
         .then(function() {
             query.DeletepostComments(req.params.id)
                 .then(function() {

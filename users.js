@@ -18,7 +18,9 @@ function findUser(username) {
 function authenticateUser(username, password) {
     return findUser(username)
     .then(function(user){
+      if(user){
       return bcrypt.compareSync(password,user.password)
+    }
     })
 
 }
@@ -30,7 +32,7 @@ function Register(name, username, password) {
         var hash=hashedpass(password)
         return query.AddUser(name,username,hash);
       }
-      return {no:"username is already exists"}
+      return {error:"Username is already exists"}
     })
   }
 
