@@ -1,17 +1,18 @@
-<a class="home" href="/chat">Chat</a>
 
 
 {{#if verified}}
     <div class="log">
         <a href="/logout">Logout</a> {{user.name}}
     </div>
-    <a href="/post">Post an article</a>
+    <a  class="post" href="/post">Post an article</a>
+      <a class='log' href="/chat">Chat</a>
 {{/if}}
 
 {{#unless verified}}
     <div class="log">
         <a href="/login">Log in to post</a>
     </div>
+
 {{/unless}}
 
 <h1>My Blog</h1>

@@ -72,7 +72,11 @@ router.get('/updatearticle/:id/:user', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-    res.render('login')
+
+    res.render('login' ,{
+        flash: req.flash()
+    })
+
 });
 
 router.get('/logout', function(req, res, next) {
@@ -108,16 +112,15 @@ router.post('/postcomment/:id/:user', function(req, res, next) {
 router.post('/register', function(req, res, next) {
     users.Register(req.body.name, req.body.username, req.body.password)
         .then(function(error) {
-            res.render('login', {
-                error: error.error
-            })
+            res.render('login')
         })
 })
 
 router.post('/signin', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/login'
-
+    failureRedirect: '/login',
+    failureFlash: 'Invalid username or password.',
+    successFlash: 'Welcome!',
 }))
 
 router.post('/post/:id/delete', function(req, res, next) {

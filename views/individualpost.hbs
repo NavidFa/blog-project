@@ -4,8 +4,12 @@
     <div class="log">
         <a href="/logout">Logout</a> {{user.name}}
     </div>
-    <a href="/post">Post an article</a>
-{{/if}}
+    <a class="log" href="/chat">Chat</a>
+
+    {{/if}}
+
+    <a class="post" href="/post">Post an article</a>
+
 
 {{#unless verified}}
     <div class="log">
@@ -34,7 +38,7 @@
 
 {{#each comments}}
 <div class="comment">
-<h6>{{name}} wrote :</h6>
+<h4>{{name}} wrote :</h4>
     <h4>{{commentbody}}</h4>
     <h6>{{created_at}}</h6>
     {{#if commentator}}

@@ -1,8 +1,6 @@
+
 $(()=>{
 var socket = io()
-
-
-
 $("#target").submit(function(event){
  event.preventDefault();
  var message = username +" "+"said"+": "+$('#m').val();
